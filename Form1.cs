@@ -95,6 +95,11 @@ namespace AlquilerDeAutos
                         founded = true;
                 if (founded == false) cmbPlaca.Items.Add(lstAlquileres[x].Placa);
             }
+            cmbPlaca.DisplayMember = "Placa";
+            cmbPlaca.ValueMember = "Placa";
+            cmbPlaca.DataSource = null;
+            cmbPlaca.DataSource = lstAlquileres;
+            cmbPlaca.Refresh();
         }
         private void Form1_Load(object sender, EventArgs e)
         {
