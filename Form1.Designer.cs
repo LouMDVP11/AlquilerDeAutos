@@ -39,14 +39,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dtgVehiculosAlquiler = new System.Windows.Forms.DataGridView();
-            this.label3 = new System.Windows.Forms.Label();
-            this.rbNit = new System.Windows.Forms.RadioButton();
-            this.rbNombre = new System.Windows.Forms.RadioButton();
-            this.rbPlaca = new System.Windows.Forms.RadioButton();
             this.lblCampo = new System.Windows.Forms.Label();
-            this.cmbCampo = new System.Windows.Forms.ComboBox();
+            this.cmbPlaca = new System.Windows.Forms.ComboBox();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.btnReestablecer = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtTotal = new System.Windows.Forms.TextBox();
+            this.cmbNIT = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgVehiculosDisponibles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgVehiculosAlquiler)).BeginInit();
@@ -105,6 +105,7 @@
             this.actualizarToolStripMenuItem.Name = "actualizarToolStripMenuItem";
             this.actualizarToolStripMenuItem.Size = new System.Drawing.Size(106, 24);
             this.actualizarToolStripMenuItem.Text = "↻ Actualizar";
+            this.actualizarToolStripMenuItem.Click += new System.EventHandler(this.actualizarToolStripMenuItem_Click);
             // 
             // dtgVehiculosDisponibles
             // 
@@ -128,7 +129,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 266);
+            this.label1.Location = new System.Drawing.Point(12, 248);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(139, 17);
             this.label1.TabIndex = 5;
@@ -137,105 +138,102 @@
             // dtgVehiculosAlquiler
             // 
             this.dtgVehiculosAlquiler.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgVehiculosAlquiler.Location = new System.Drawing.Point(12, 286);
+            this.dtgVehiculosAlquiler.Location = new System.Drawing.Point(12, 268);
             this.dtgVehiculosAlquiler.Name = "dtgVehiculosAlquiler";
             this.dtgVehiculosAlquiler.RowHeadersWidth = 51;
             this.dtgVehiculosAlquiler.RowTemplate.Height = 24;
             this.dtgVehiculosAlquiler.Size = new System.Drawing.Size(773, 122);
             this.dtgVehiculosAlquiler.TabIndex = 6;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 202);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(85, 17);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Buscar por: ";
-            // 
-            // rbNit
-            // 
-            this.rbNit.AutoSize = true;
-            this.rbNit.Location = new System.Drawing.Point(103, 200);
-            this.rbNit.Name = "rbNit";
-            this.rbNit.Size = new System.Drawing.Size(51, 21);
-            this.rbNit.TabIndex = 8;
-            this.rbNit.TabStop = true;
-            this.rbNit.Text = "NIT";
-            this.rbNit.UseVisualStyleBackColor = true;
-            // 
-            // rbNombre
-            // 
-            this.rbNombre.AutoSize = true;
-            this.rbNombre.Location = new System.Drawing.Point(171, 200);
-            this.rbNombre.Name = "rbNombre";
-            this.rbNombre.Size = new System.Drawing.Size(79, 21);
-            this.rbNombre.TabIndex = 9;
-            this.rbNombre.TabStop = true;
-            this.rbNombre.Text = "Nombre";
-            this.rbNombre.UseVisualStyleBackColor = true;
-            // 
-            // rbPlaca
-            // 
-            this.rbPlaca.AutoSize = true;
-            this.rbPlaca.Location = new System.Drawing.Point(266, 200);
-            this.rbPlaca.Name = "rbPlaca";
-            this.rbPlaca.Size = new System.Drawing.Size(64, 21);
-            this.rbPlaca.TabIndex = 10;
-            this.rbPlaca.TabStop = true;
-            this.rbPlaca.Text = "Placa";
-            this.rbPlaca.UseVisualStyleBackColor = true;
-            // 
             // lblCampo
             // 
             this.lblCampo.AutoSize = true;
-            this.lblCampo.Location = new System.Drawing.Point(40, 235);
+            this.lblCampo.Location = new System.Drawing.Point(12, 211);
             this.lblCampo.Name = "lblCampo";
-            this.lblCampo.Size = new System.Drawing.Size(52, 17);
+            this.lblCampo.Size = new System.Drawing.Size(43, 17);
             this.lblCampo.TabIndex = 11;
-            this.lblCampo.Text = "Campo";
+            this.lblCampo.Text = "Placa";
             // 
-            // cmbCampo
+            // cmbPlaca
             // 
-            this.cmbCampo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCampo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmbCampo.FormattingEnabled = true;
-            this.cmbCampo.Location = new System.Drawing.Point(103, 232);
-            this.cmbCampo.Name = "cmbCampo";
-            this.cmbCampo.Size = new System.Drawing.Size(315, 24);
-            this.cmbCampo.TabIndex = 12;
+            this.cmbPlaca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPlaca.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbPlaca.FormattingEnabled = true;
+            this.cmbPlaca.Location = new System.Drawing.Point(75, 208);
+            this.cmbPlaca.Name = "cmbPlaca";
+            this.cmbPlaca.Size = new System.Drawing.Size(128, 24);
+            this.cmbPlaca.TabIndex = 12;
+            this.cmbPlaca.SelectedValueChanged += new System.EventHandler(this.cmbPlaca_SelectedValueChanged);
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(444, 232);
+            this.btnBuscar.Location = new System.Drawing.Point(439, 204);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(101, 23);
+            this.btnBuscar.Size = new System.Drawing.Size(101, 30);
             this.btnBuscar.TabIndex = 13;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // btnReestablecer
             // 
-            this.btnReestablecer.Location = new System.Drawing.Point(551, 232);
+            this.btnReestablecer.Location = new System.Drawing.Point(546, 204);
             this.btnReestablecer.Name = "btnReestablecer";
-            this.btnReestablecer.Size = new System.Drawing.Size(101, 23);
+            this.btnReestablecer.Size = new System.Drawing.Size(101, 30);
             this.btnReestablecer.TabIndex = 14;
             this.btnReestablecer.Text = "Reestablecer";
             this.btnReestablecer.UseVisualStyleBackColor = true;
+            this.btnReestablecer.Click += new System.EventHandler(this.btnReestablecer_Click_1);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(600, 401);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(59, 17);
+            this.label4.TabIndex = 32;
+            this.label4.Text = "Total: Q";
+            // 
+            // txtTotal
+            // 
+            this.txtTotal.Enabled = false;
+            this.txtTotal.Location = new System.Drawing.Point(665, 398);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.Size = new System.Drawing.Size(120, 22);
+            this.txtTotal.TabIndex = 31;
+            // 
+            // cmbNIT
+            // 
+            this.cmbNIT.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbNIT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbNIT.FormattingEnabled = true;
+            this.cmbNIT.Location = new System.Drawing.Point(282, 208);
+            this.cmbNIT.Name = "cmbNIT";
+            this.cmbNIT.Size = new System.Drawing.Size(128, 24);
+            this.cmbNIT.TabIndex = 34;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(235, 211);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(30, 17);
+            this.label3.TabIndex = 33;
+            this.label3.Text = "NIT";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 433);
+            this.Controls.Add(this.cmbNIT);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.txtTotal);
             this.Controls.Add(this.btnReestablecer);
             this.Controls.Add(this.btnBuscar);
-            this.Controls.Add(this.cmbCampo);
+            this.Controls.Add(this.cmbPlaca);
             this.Controls.Add(this.lblCampo);
-            this.Controls.Add(this.rbPlaca);
-            this.Controls.Add(this.rbNombre);
-            this.Controls.Add(this.rbNit);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.dtgVehiculosAlquiler);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dtgVehiculosDisponibles);
@@ -268,15 +266,15 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dtgVehiculosAlquiler;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.RadioButton rbNit;
-        private System.Windows.Forms.RadioButton rbNombre;
-        private System.Windows.Forms.RadioButton rbPlaca;
         private System.Windows.Forms.ToolStripMenuItem actualizarToolStripMenuItem;
         private System.Windows.Forms.Label lblCampo;
-        private System.Windows.Forms.ComboBox cmbCampo;
+        private System.Windows.Forms.ComboBox cmbPlaca;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.Button btnReestablecer;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtTotal;
+        private System.Windows.Forms.ComboBox cmbNIT;
+        private System.Windows.Forms.Label label3;
     }
 }
 
