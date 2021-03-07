@@ -29,7 +29,8 @@ namespace AlquilerDeAutos
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             if (txtColor.Text.Trim().Length > 0 && txtMarca.Text.Trim().Length > 0 
-                && txtModelo.Text.Trim().Length > 0 && txtPlaca.Text.Trim().Length > 0 && txtPrecio.Text.Trim().Length > 0)
+                && txtModelo.Text.Trim().Length > 0 && txtPlaca.Text.Trim().Length > 0 
+                && txtPrecio.Text.Trim().Length > 0 && Convert.ToInt32(txtPrecio.Text)>0)
             {
                 Boolean repetido = false;
                 for (int x = 0; x < lstVehiculos.Count; x++)
@@ -70,7 +71,7 @@ namespace AlquilerDeAutos
                     txtPlaca.Focus();
                 }
             }
-            else MessageBox.Show("Debe llenar todos los datos.");
+            else MessageBox.Show("Debe llenar todos los datos o el precio por kilómetro debe ser mayor a cero.");
         }
 
         private void txtPrecio_KeyPress(object sender, KeyPressEventArgs e)

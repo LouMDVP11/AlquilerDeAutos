@@ -65,15 +65,17 @@ namespace AlquilerDeAutos
                 clsAlquiler AlquilerTemp = new clsAlquiler();
                 AlquilerTemp.Nit = Convert.ToInt32(reader3.ReadLine());
                 AlquilerTemp.Placa = reader3.ReadLine();
-                AlquilerTemp.FechaAlquiler = Convert.ToDateTime(reader3.ReadLine());
-                AlquilerTemp.FechaDevolucion = Convert.ToDateTime(reader3.ReadLine());
+                AlquilerTemp.FechaAlquiler = reader3.ReadLine();
+                AlquilerTemp.FechaDevolucion = reader3.ReadLine();
                 AlquilerTemp.KmRecorridos = Convert.ToInt32(reader3.ReadLine());
+                AlquilerTemp.Total_A_Pagar = Convert.ToInt32(reader3.ReadLine());
                 lstAlquileres.Add(AlquilerTemp);
             }
             reader3.Close();
         }
         public void actualizar()
         {
+            lstVehiculosDisponibles.Clear();
             foreach (var v in lstVehiculos) {
                 Boolean founded = false;
                 foreach (var a in lstAlquileres)
@@ -95,11 +97,6 @@ namespace AlquilerDeAutos
                         founded = true;
                 if (founded == false) cmbPlaca.Items.Add(lstAlquileres[x].Placa);
             }
-            cmbPlaca.DisplayMember = "Placa";
-            cmbPlaca.ValueMember = "Placa";
-            cmbPlaca.DataSource = null;
-            cmbPlaca.DataSource = lstAlquileres;
-            cmbPlaca.Refresh();
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -110,11 +107,11 @@ namespace AlquilerDeAutos
         private void rbNit_CheckedChanged(object sender, EventArgs e){}
         private void rbNombre_CheckedChanged(object sender, EventArgs e){}
 
-        
+
         private void AlquilerFiltrado(List<clsAlquiler> lstAlquileresTemp)
         {
             foreach (var a in lstAlquileres)
-                if (a.Placa.Equals(cmbPlaca.SelectedValue)) lstAlquileresTemp.Add(a);
+                if (a.Placa.Equals(cmbPlaca.SelectedItem.ToString()) && a.Nit.Equals(Convert.ToInt32(cmbNIT.SelectedItem))) lstAlquileresTemp.Add(a);
             dtgVehiculosAlquiler.DataSource = null;
             dtgVehiculosAlquiler.DataSource = lstAlquileresTemp;
             dtgVehiculosAlquiler.Refresh();
@@ -134,8 +131,9 @@ namespace AlquilerDeAutos
         private void btnReestablecer_Click_1(object sender, EventArgs e)
         {
             cmbPlaca.SelectedIndex = -1;
+            cmbNIT.Items.Clear();
             this.dtgVehiculosAlquiler.DataSource = null;
-            this.dtgVehiculosAlquiler.DataSource = lstVehiculos;
+            this.dtgVehiculosAlquiler.DataSource = lstAlquileres;
             this.dtgVehiculosAlquiler.Refresh();
             btnBuscar.Enabled = false;
             btnReestablecer.Enabled = false;
@@ -156,13 +154,6 @@ namespace AlquilerDeAutos
 
         private void cmbPlaca_SelectedValueChanged(object sender, EventArgs e)
         {
-            for (int x = 0; x < lstAlquileres.Count; x++)
-                for (int y = 0; y < x; y++)
-                    if (lstAlquileres[x].Placa.Equals(lstAlquileres[y].Placa))
-                        if (!lstAlquileres[x].Nit.Equals(lstAlquileres[y].Nit))
-                            cmbNIT.Items.Add(lstAlquileres[x].Nit);
-            btnBuscar.Enabled = true;
-            btnReestablecer.Enabled = true;
         }
 
         private void agregarAutomóvilToolStripMenuItem_Click(object sender, EventArgs e)
@@ -171,6 +162,33 @@ namespace AlquilerDeAutos
             Auto.lstVehiculos = this.lstVehiculos;
             Auto.Actualizar();
             Auto.ShowDialog();
+        }
+
+        private void agregarAlquilerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAlquileres alquiler = new frmAlquileres();
+            alquiler.lstClientes = this.lstClientes;
+            alquiler.lstAlquileres = this.lstAlquileres;
+            alquiler.lstVehiculos = this.lstVehiculos;
+            alquiler.lstVehiculosDisponibles = this.lstVehiculosDisponibles;
+            alquiler.Actualizar();
+            alquiler.ShowDialog();
+        }
+        
+        private void cmbPlaca_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbPlaca.SelectedIndex > -1) { 
+                for (int x = 0; x < lstAlquileres.Count; x++)
+                    if (lstAlquileres[x].Placa.Equals(cmbPlaca.SelectedItem.ToString())) { 
+                        for(int y = 0; y<cmbNIT.Items.Count; y++)
+                            if(lstAlquileres[y].Nit != lstAlquileres[x].Nit)
+                                cmbNIT.Items.Add(lstAlquileres[x].Nit);
+                        if(x == 0) cmbNIT.Items.Add(lstAlquileres[x].Nit);
+                    }
+                cmbNIT.SelectedIndex = 0;
+                btnBuscar.Enabled = true;
+                btnReestablecer.Enabled = true;
+            }
         }
     }
 }

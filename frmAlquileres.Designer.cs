@@ -38,9 +38,9 @@
             this.dtpAlquiler = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.btnAlquilar = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dtgAlquileres = new System.Windows.Forms.DataGridView();
             this.label6 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgAlquileres)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -59,6 +59,7 @@
             this.cmbNIT.Name = "cmbNIT";
             this.cmbNIT.Size = new System.Drawing.Size(107, 24);
             this.cmbNIT.TabIndex = 1;
+            this.cmbNIT.SelectedIndexChanged += new System.EventHandler(this.cmbNIT_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -76,6 +77,7 @@
             this.cmbNombre.Name = "cmbNombre";
             this.cmbNombre.Size = new System.Drawing.Size(228, 24);
             this.cmbNombre.TabIndex = 3;
+            this.cmbNombre.SelectedIndexChanged += new System.EventHandler(this.cmbNombre_SelectedIndexChanged);
             // 
             // cmbPlaca
             // 
@@ -130,16 +132,17 @@
             this.btnAlquilar.TabIndex = 9;
             this.btnAlquilar.Text = "Alquilar";
             this.btnAlquilar.UseVisualStyleBackColor = true;
+            this.btnAlquilar.Click += new System.EventHandler(this.btnAlquilar_Click);
             // 
-            // dataGridView1
+            // dtgAlquileres
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(27, 204);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(497, 199);
-            this.dataGridView1.TabIndex = 10;
+            this.dtgAlquileres.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgAlquileres.Location = new System.Drawing.Point(27, 204);
+            this.dtgAlquileres.Name = "dtgAlquileres";
+            this.dtgAlquileres.RowHeadersWidth = 51;
+            this.dtgAlquileres.RowTemplate.Height = 24;
+            this.dtgAlquileres.Size = new System.Drawing.Size(497, 199);
+            this.dtgAlquileres.TabIndex = 10;
             // 
             // label6
             // 
@@ -156,7 +159,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(559, 433);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dtgAlquileres);
             this.Controls.Add(this.btnAlquilar);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.dtpAlquiler);
@@ -171,7 +174,7 @@
             this.Name = "frmAlquileres";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmAlquileres";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgAlquileres)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -189,7 +192,7 @@
         private System.Windows.Forms.DateTimePicker dtpAlquiler;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnAlquilar;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dtgAlquileres;
         private System.Windows.Forms.Label label6;
     }
 }

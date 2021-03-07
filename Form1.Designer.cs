@@ -94,6 +94,7 @@
             this.agregarAlquilerToolStripMenuItem.Name = "agregarAlquilerToolStripMenuItem";
             this.agregarAlquilerToolStripMenuItem.Size = new System.Drawing.Size(242, 26);
             this.agregarAlquilerToolStripMenuItem.Text = "Agregar alquiler";
+            this.agregarAlquilerToolStripMenuItem.Click += new System.EventHandler(this.agregarAlquilerToolStripMenuItem_Click);
             // 
             // devolverUnAutomóvilToolStripMenuItem
             // 
@@ -164,6 +165,7 @@
             this.cmbPlaca.Name = "cmbPlaca";
             this.cmbPlaca.Size = new System.Drawing.Size(128, 24);
             this.cmbPlaca.TabIndex = 12;
+            this.cmbPlaca.SelectedIndexChanged += new System.EventHandler(this.cmbPlaca_SelectedIndexChanged);
             this.cmbPlaca.SelectedValueChanged += new System.EventHandler(this.cmbPlaca_SelectedValueChanged);
             // 
             // btnBuscar
@@ -180,7 +182,7 @@
             // 
             this.btnReestablecer.Location = new System.Drawing.Point(546, 204);
             this.btnReestablecer.Name = "btnReestablecer";
-            this.btnReestablecer.Size = new System.Drawing.Size(101, 30);
+            this.btnReestablecer.Size = new System.Drawing.Size(113, 30);
             this.btnReestablecer.TabIndex = 14;
             this.btnReestablecer.Text = "Reestablecer";
             this.btnReestablecer.UseVisualStyleBackColor = true;
