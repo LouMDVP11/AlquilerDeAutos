@@ -40,9 +40,9 @@
             this.txtColor = new System.Windows.Forms.TextBox();
             this.txtPrecio = new System.Windows.Forms.TextBox();
             this.btnAgregar = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dtgVehiculos = new System.Windows.Forms.DataGridView();
             this.label7 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgVehiculos)).BeginInit();
             this.SuspendLayout();
             // 
             // label5
@@ -134,6 +134,7 @@
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(111, 22);
             this.txtPrecio.TabIndex = 21;
+            this.txtPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecio_KeyPress);
             // 
             // btnAgregar
             // 
@@ -143,16 +144,17 @@
             this.btnAgregar.TabIndex = 22;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
-            // dataGridView1
+            // dtgVehiculos
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(17, 183);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(564, 170);
-            this.dataGridView1.TabIndex = 23;
+            this.dtgVehiculos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgVehiculos.Location = new System.Drawing.Point(17, 183);
+            this.dtgVehiculos.Name = "dtgVehiculos";
+            this.dtgVehiculos.RowHeadersWidth = 51;
+            this.dtgVehiculos.RowTemplate.Height = 24;
+            this.dtgVehiculos.Size = new System.Drawing.Size(564, 170);
+            this.dtgVehiculos.TabIndex = 23;
             // 
             // label7
             // 
@@ -169,7 +171,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(620, 383);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dtgVehiculos);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.txtPrecio);
             this.Controls.Add(this.txtColor);
@@ -182,9 +184,12 @@
             this.Controls.Add(this.txtPlaca);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label5);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmAutos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Vehículos";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.frmAutos_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dtgVehiculos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -204,7 +209,7 @@
         private System.Windows.Forms.TextBox txtColor;
         private System.Windows.Forms.TextBox txtPrecio;
         private System.Windows.Forms.Button btnAgregar;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dtgVehiculos;
         private System.Windows.Forms.Label label7;
     }
 }

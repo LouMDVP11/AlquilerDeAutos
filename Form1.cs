@@ -25,7 +25,10 @@ namespace AlquilerDeAutos
 
         private void clienteNuevoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            frmClientes cliente = new frmClientes();
+            cliente.lstClientes = this.lstClientes;
+            cliente.Actualizar();
+            cliente.ShowDialog();
         }
         private void LoadData() {
             FileStream stream = new FileStream("Clientes.txt", FileMode.Open, FileAccess.Read);
@@ -50,9 +53,9 @@ namespace AlquilerDeAutos
             {
                 clsVehiculo vehiculoTemp = new clsVehiculo();
                 vehiculoTemp.Placa = reader2.ReadLine();
-                vehiculoTemp.Color = reader2.ReadLine();
                 vehiculoTemp.Marca = reader2.ReadLine();
                 vehiculoTemp.Modelo = reader2.ReadLine();
+                vehiculoTemp.Color = reader2.ReadLine();
                 vehiculoTemp.PrecioPorKm = Convert.ToDouble(reader2.ReadLine());
                 lstVehiculos.Add(vehiculoTemp);
             }
@@ -155,6 +158,14 @@ namespace AlquilerDeAutos
                             cmbNIT.Items.Add(lstAlquileres[x].Nit);
             btnBuscar.Enabled = true;
             btnReestablecer.Enabled = true;
+        }
+
+        private void agregarAutomóvilToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAutos Auto = new frmAutos();
+            Auto.lstVehiculos = this.lstVehiculos;
+            Auto.Actualizar();
+            Auto.ShowDialog();
         }
     }
 }

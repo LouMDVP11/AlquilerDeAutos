@@ -117,6 +117,7 @@
             this.btnAgregar.TabIndex = 16;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // dtgClientes
             // 
@@ -147,6 +148,7 @@
             this.Name = "frmClientes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Clientes";
+            this.Load += new System.EventHandler(this.frmClientes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgClientes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
