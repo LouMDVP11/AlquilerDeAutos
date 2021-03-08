@@ -101,6 +101,7 @@
             this.devolverUnAutomóvilToolStripMenuItem.Name = "devolverUnAutomóvilToolStripMenuItem";
             this.devolverUnAutomóvilToolStripMenuItem.Size = new System.Drawing.Size(242, 26);
             this.devolverUnAutomóvilToolStripMenuItem.Text = "Devolver un automóvil";
+            this.devolverUnAutomóvilToolStripMenuItem.Click += new System.EventHandler(this.devolverUnAutomóvilToolStripMenuItem_Click);
             // 
             // actualizarToolStripMenuItem
             // 
@@ -170,6 +171,7 @@
             // 
             // btnBuscar
             // 
+            this.btnBuscar.Enabled = false;
             this.btnBuscar.Location = new System.Drawing.Point(439, 204);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(101, 30);
@@ -180,6 +182,7 @@
             // 
             // btnReestablecer
             // 
+            this.btnReestablecer.Enabled = false;
             this.btnReestablecer.Location = new System.Drawing.Point(546, 204);
             this.btnReestablecer.Name = "btnReestablecer";
             this.btnReestablecer.Size = new System.Drawing.Size(113, 30);

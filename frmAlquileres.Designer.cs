@@ -174,6 +174,7 @@
             this.Name = "frmAlquileres";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmAlquileres";
+            this.Load += new System.EventHandler(this.frmAlquileres_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgAlquileres)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -49,7 +49,7 @@ namespace AlquilerDeAutos
             clsAlquiler nuevoAlquiler = new clsAlquiler();
             nuevoAlquiler.Nit = Convert.ToInt32(cmbNIT.SelectedValue);
             nuevoAlquiler.Placa = cmbPlaca.SelectedValue.ToString();
-            nuevoAlquiler.FechaAlquiler = dtpAlquiler.ToString();
+            nuevoAlquiler.FechaAlquiler = dtpAlquiler.Value.ToString();
             nuevoAlquiler.FechaDevolucion = " ";
             nuevoAlquiler.KmRecorridos = 0;
             nuevoAlquiler.Total_A_Pagar = 0;
@@ -61,10 +61,8 @@ namespace AlquilerDeAutos
             writer.WriteLine(nuevoAlquiler.Total_A_Pagar);
             writer.Close();
             this.lstAlquileres.Add(nuevoAlquiler);
-            MessageBox.Show("Empleado agregado exitosamente.");
-            cmbNIT.SelectedIndex = 0;
-            cmbPlaca.SelectedIndex=0;
-            Actualizar();
+            MessageBox.Show("Alquiler agregado exitosamente.");
+            this.Close();
         }
         Boolean Inicio = false;
         private void cmbNIT_SelectedIndexChanged(object sender, EventArgs e)
@@ -79,6 +77,11 @@ namespace AlquilerDeAutos
         {
             if (cmbNombre.Items.Count > 0)
                 cmbNIT.SelectedIndex = cmbNombre.SelectedIndex;
+        }
+
+        private void frmAlquileres_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

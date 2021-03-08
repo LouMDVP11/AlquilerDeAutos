@@ -25,6 +25,7 @@ namespace AlquilerDeAutos
 
         private void clienteNuevoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            actualizar();
             frmClientes cliente = new frmClientes();
             cliente.lstClientes = this.lstClientes;
             cliente.Actualizar();
@@ -138,6 +139,7 @@ namespace AlquilerDeAutos
             btnBuscar.Enabled = false;
             btnReestablecer.Enabled = false;
             txtTotal.Clear();
+            cmbPlaca.Enabled = true;
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -158,6 +160,7 @@ namespace AlquilerDeAutos
 
         private void agregarAutomóvilToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            actualizar();
             frmAutos Auto = new frmAutos();
             Auto.lstVehiculos = this.lstVehiculos;
             Auto.Actualizar();
@@ -166,6 +169,7 @@ namespace AlquilerDeAutos
 
         private void agregarAlquilerToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            actualizar();
             frmAlquileres alquiler = new frmAlquileres();
             alquiler.lstClientes = this.lstClientes;
             alquiler.lstAlquileres = this.lstAlquileres;
@@ -180,15 +184,31 @@ namespace AlquilerDeAutos
             if (cmbPlaca.SelectedIndex > -1) { 
                 for (int x = 0; x < lstAlquileres.Count; x++)
                     if (lstAlquileres[x].Placa.Equals(cmbPlaca.SelectedItem.ToString())) { 
-                        for(int y = 0; y<cmbNIT.Items.Count; y++)
-                            if(lstAlquileres[y].Nit != lstAlquileres[x].Nit)
+                        for(int y = 0; y< lstAlquileres.Count; y++)
+                            if(lstAlquileres[y].Nit != lstAlquileres[x].Nit && x==y)
                                 cmbNIT.Items.Add(lstAlquileres[x].Nit);
-                        if(x == 0) cmbNIT.Items.Add(lstAlquileres[x].Nit);
+                        if (cmbNIT.Items.Count==0 || x==0) cmbNIT.Items.Add(lstAlquileres[x].Nit);
                     }
                 cmbNIT.SelectedIndex = 0;
                 btnBuscar.Enabled = true;
                 btnReestablecer.Enabled = true;
+                cmbPlaca.Enabled = false;
             }
+        }
+
+        private void devolverUnAutomóvilToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            actualizar();
+            List<clsAlquiler> lstAlquileresFiltrada = new List<clsAlquiler>();
+            foreach (var al in lstAlquileres) {
+                if (al.FechaDevolucion == " ") lstAlquileresFiltrada.Add(al);
+            }
+            frmDevoluciones devolucion = new frmDevoluciones();
+            devolucion.lstAlquileresActivos = lstAlquileresFiltrada;
+            devolucion.lstAlquileres = this.lstAlquileres;
+            devolucion.lstVehiculos = this.lstVehiculos;
+            devolucion.Actualizar();
+            devolucion.ShowDialog();
         }
     }
 }
