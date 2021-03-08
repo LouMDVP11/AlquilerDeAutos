@@ -61,7 +61,7 @@ namespace AlquilerDeAutos
             writer.WriteLine(nuevoAlquiler.Total_A_Pagar);
             writer.Close();
             this.lstAlquileres.Add(nuevoAlquiler);
-            MessageBox.Show("Alquiler agregado exitosamente.");
+            MessageBox.Show("Alquiler agregado exitosamente.\n Presione actualizar en el formulario general para visualizar los cambios.");
             this.Close();
         }
         Boolean Inicio = false;

@@ -181,13 +181,23 @@ namespace AlquilerDeAutos
         
         private void cmbPlaca_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //Al cambiar la placa en el cmb carga todos los nit's relacionados con esta
+            List<int> nits = new List<int>();
             if (cmbPlaca.SelectedIndex > -1) { 
                 for (int x = 0; x < lstAlquileres.Count; x++)
-                    if (lstAlquileres[x].Placa.Equals(cmbPlaca.SelectedItem.ToString())) { 
-                        for(int y = 0; y< lstAlquileres.Count; y++)
-                            if(lstAlquileres[y].Nit != lstAlquileres[x].Nit && x==y)
-                                cmbNIT.Items.Add(lstAlquileres[x].Nit);
-                        if (cmbNIT.Items.Count==0 || x==0) cmbNIT.Items.Add(lstAlquileres[x].Nit);
+                    if (lstAlquileres[x].Placa.Equals(cmbPlaca.SelectedItem.ToString())) {
+                        if (cmbNIT.Items.Count == 0)
+                        {
+                            cmbNIT.Items.Add(lstAlquileres[x].Nit);
+                            nits.Add(lstAlquileres[x].Nit);
+                        }
+                        else
+                            for (int y = 0; y < nits.Count; y++)
+                                if (nits[y] != lstAlquileres[x].Nit)
+                                {
+                                    cmbNIT.Items.Add(lstAlquileres[x].Nit);
+                                    nits.Add(lstAlquileres[x].Nit);
+                                }
                     }
                 cmbNIT.SelectedIndex = 0;
                 btnBuscar.Enabled = true;

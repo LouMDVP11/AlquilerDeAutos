@@ -68,11 +68,7 @@ namespace AlquilerDeAutos
                     writer.Close();
                     this.lstClientes.Add(nuevoEmpleado);
                     MessageBox.Show("Cliente agregado exitosamente.");
-                    txtNombre.Clear();
-                    txtNIT.Clear();
-                    txtDireccion.Clear();
-                    txtNIT.Focus();
-                    Actualizar();
+                    this.Close();
                 }
                 else
                 {

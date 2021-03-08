@@ -43,8 +43,6 @@
             this.cmbPlaca = new System.Windows.Forms.ComboBox();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.btnReestablecer = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtTotal = new System.Windows.Forms.TextBox();
             this.cmbNIT = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
@@ -191,23 +189,6 @@
             this.btnReestablecer.UseVisualStyleBackColor = true;
             this.btnReestablecer.Click += new System.EventHandler(this.btnReestablecer_Click_1);
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(600, 401);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(59, 17);
-            this.label4.TabIndex = 32;
-            this.label4.Text = "Total: Q";
-            // 
-            // txtTotal
-            // 
-            this.txtTotal.Enabled = false;
-            this.txtTotal.Location = new System.Drawing.Point(665, 398);
-            this.txtTotal.Name = "txtTotal";
-            this.txtTotal.Size = new System.Drawing.Size(120, 22);
-            this.txtTotal.TabIndex = 31;
-            // 
             // cmbNIT
             // 
             this.cmbNIT.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -231,11 +212,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 433);
+            this.ClientSize = new System.Drawing.Size(800, 403);
             this.Controls.Add(this.cmbNIT);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.txtTotal);
             this.Controls.Add(this.btnReestablecer);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.cmbPlaca);
@@ -277,8 +256,6 @@
         private System.Windows.Forms.ComboBox cmbPlaca;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.Button btnReestablecer;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.ComboBox cmbNIT;
         private System.Windows.Forms.Label label3;
     }
