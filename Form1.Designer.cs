@@ -84,7 +84,7 @@
             // 
             this.agregarAutomóvilToolStripMenuItem.Name = "agregarAutomóvilToolStripMenuItem";
             this.agregarAutomóvilToolStripMenuItem.Size = new System.Drawing.Size(242, 26);
-            this.agregarAutomóvilToolStripMenuItem.Text = " Agregar automóvil";
+            this.agregarAutomóvilToolStripMenuItem.Text = "Agregar automóvil";
             this.agregarAutomóvilToolStripMenuItem.Click += new System.EventHandler(this.agregarAutomóvilToolStripMenuItem_Click);
             // 
             // agregarAlquilerToolStripMenuItem

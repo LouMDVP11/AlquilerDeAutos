@@ -13,6 +13,7 @@ namespace AlquilerDeAutos
 {
     public partial class Form1 : Form
     {
+        //creación de listas que tendrán los datos del programa
         List<clsAlquiler> lstAlquileres = new List<clsAlquiler>();
         List<clsCliente> lstClientes = new List<clsCliente>();
         List<clsVehiculo> lstVehiculos = new List<clsVehiculo>();
@@ -25,6 +26,11 @@ namespace AlquilerDeAutos
 
         private void clienteNuevoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //Llamar al frmCliente para agregar uno nuevo
+            // se actualizan los datos del frm principal, se hace una instancia
+            // del formulario, se asigna lstClientes a la lstClientes de ese form
+            // y se llama en forma showDialog para que el usuario no haga nada con 
+            // los otros formularios ni las funciones de estos.
             actualizar();
             frmClientes cliente = new frmClientes();
             cliente.lstClientes = this.lstClientes;
@@ -32,6 +38,7 @@ namespace AlquilerDeAutos
             cliente.ShowDialog();
         }
         private void LoadData() {
+            //Función que carga los datos de los archivos de texto a las listas del programa
             FileStream stream = new FileStream("Clientes.txt", FileMode.Open, FileAccess.Read);
             FileStream stream2 = new FileStream("Vehiculos.txt", FileMode.Open, FileAccess.Read);
             FileStream stream3 = new FileStream("Alquileres.txt", FileMode.Open, FileAccess.Read);
@@ -76,6 +83,10 @@ namespace AlquilerDeAutos
         }
         public void actualizar()
         {
+            //función en la que se llena la lista de los vehículos disponibles
+            //actualmente para mostrarlos y también muestra en dtgVehículosAlquier
+            //todos los autos que han sido alquilados, estando sus alquileres activos
+            //o inactivos.
             lstVehiculosDisponibles.Clear();
             foreach (var v in lstVehiculos) {
                 Boolean founded = false;
@@ -90,6 +101,8 @@ namespace AlquilerDeAutos
             this.dtgVehiculosAlquiler.DataSource = this.lstAlquileres;
             this.dtgVehiculosAlquiler.Refresh();
             cmbPlaca.Items.Clear();
+            //Llenado del cmbPlaca con todas las placas registradas en la lista
+            //de alquileres, estén estos activos o devueltos.
             for (int x = 0; x < lstAlquileres.Count; x++)
             {
                 Boolean founded = false;
@@ -101,6 +114,7 @@ namespace AlquilerDeAutos
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            //cargar datos en el formulario principal
             LoadData();
             actualizar();
         }
@@ -111,6 +125,9 @@ namespace AlquilerDeAutos
 
         private void AlquilerFiltrado(List<clsAlquiler> lstAlquileresTemp)
         {
+            //Función que muestra los autos dependiendo de lo
+            //que fue seleccionado en el combobox, es decir
+            //en base a la placa y al nit del cliente
             foreach (var a in lstAlquileres)
                 if (a.Placa.Equals(cmbPlaca.SelectedItem.ToString()) && a.Nit.Equals(Convert.ToInt32(cmbNIT.SelectedItem))) lstAlquileresTemp.Add(a);
             dtgVehiculosAlquiler.DataSource = null;
@@ -120,17 +137,14 @@ namespace AlquilerDeAutos
         private void rbPlaca_CheckedChanged(object sender, EventArgs e){}
 
         private void btnReestablecer_Click(object sender, EventArgs e)
-        {
-            cmbPlaca.SelectedIndex = -1;
-            this.dtgVehiculosAlquiler.DataSource = null;
-            this.dtgVehiculosAlquiler.DataSource = lstAlquileres;
-            this.dtgVehiculosAlquiler.Refresh();
-            btnBuscar.Enabled = false;
-            btnReestablecer.Enabled = false;
+        {//función fantasma...no eliminar, se pierde la interfaz gráfica
         }
-
+        
         private void btnReestablecer_Click_1(object sender, EventArgs e)
         {
+            //reestablece los valores predeterminados 
+            //a los campos relacionados con la busqueda
+            //filtrada de alquileres.
             cmbPlaca.SelectedIndex = -1;
             cmbNIT.Items.Clear();
             this.dtgVehiculosAlquiler.DataSource = null;
@@ -138,18 +152,21 @@ namespace AlquilerDeAutos
             this.dtgVehiculosAlquiler.Refresh();
             btnBuscar.Enabled = false;
             btnReestablecer.Enabled = false;
-            txtTotal.Clear();
             cmbPlaca.Enabled = true;
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
+            //se crea una lista de alquileres temporal 
+            //y le llama a la función AlquilerFiltrado
+            //para organizar el dtg con los datos filtrados.
             List<clsAlquiler> lstAlquileresTemp = new List<clsAlquiler>();
             AlquilerFiltrado(lstAlquileresTemp);
         }
 
         private void actualizarToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //Actualiza todos los datos del programa
             LoadData();
             this.actualizar();
         }
@@ -160,6 +177,11 @@ namespace AlquilerDeAutos
 
         private void agregarAutomóvilToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //Llamar al frmAuto para agregar uno nuevo
+            // se actualizan los datos del frm principal, se hace una instancia
+            // del formulario, se asignan las listas del frm principal al de este form
+            // y se llama en forma showDialog para que el usuario no haga nada con 
+            // los otros formularios ni las funciones de estos.
             actualizar();
             frmAutos Auto = new frmAutos();
             Auto.lstVehiculos = this.lstVehiculos;
@@ -169,6 +191,11 @@ namespace AlquilerDeAutos
 
         private void agregarAlquilerToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //Llamar al frmAlquiler para agregar uno nuevo
+            // se actualizan los datos del frm principal, se hace una instancia
+            // del formulario, se asignan las listas del frm principal al de este form
+            // y se llama en forma showDialog para que el usuario no haga nada con 
+            // los otros formularios ni las funciones de estos.
             actualizar();
             frmAlquileres alquiler = new frmAlquileres();
             alquiler.lstClientes = this.lstClientes;
@@ -208,6 +235,11 @@ namespace AlquilerDeAutos
 
         private void devolverUnAutomóvilToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //Llamar al frmDevoluciones para hacer una nueva
+            // se actualizan los datos del frm principal, se hace una instancia
+            // del formulario, se asignan las listas del frm principal al de este form
+            // y se llama en forma showDialog para que el usuario no haga nada con 
+            // los otros formularios ni las funciones de estos.
             actualizar();
             List<clsAlquiler> lstAlquileresFiltrada = new List<clsAlquiler>();
             foreach (var al in lstAlquileres) {
