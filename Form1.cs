@@ -128,6 +128,14 @@ namespace AlquilerDeAutos
                         founded = true;
                 if (founded == false) cmbPlaca.Items.Add(lstAlquileres[x].Placa);
             }
+            //Mostrar en un label el alquiler con mayor kilometraje
+            int mayorKm = -1;
+            foreach (var inter in lstIntermedia) {
+                if (inter.KmRecorridos > mayorKm) {
+                    mayorKm = inter.KmRecorridos;
+                    lblMayorKm.Text = "El mayor kilometraje registrado en un alquiler es de: " + mayorKm + "\nEl cliente fue: " + inter.Nombre + "\nEl auto fue el de la placa: " +inter.Placa;
+                }
+            }
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -183,7 +191,7 @@ namespace AlquilerDeAutos
             cmbPlaca.SelectedIndex = -1;
             cmbNIT.Items.Clear();
             this.dtgVehiculosAlquiler.DataSource = null;
-            this.dtgVehiculosAlquiler.DataSource = lstAlquileres;
+            this.dtgVehiculosAlquiler.DataSource = lstIntermedia;
             this.dtgVehiculosAlquiler.Refresh();
             btnBuscar.Enabled = false;
             btnReestablecer.Enabled = false;

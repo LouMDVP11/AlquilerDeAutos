@@ -45,6 +45,7 @@
             this.btnReestablecer = new System.Windows.Forms.Button();
             this.cmbNIT = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.lblMayorKm = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgVehiculosDisponibles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgVehiculosAlquiler)).BeginInit();
@@ -58,7 +59,7 @@
             this.actualizarToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(799, 30);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -70,7 +71,7 @@
             this.agregarAlquilerToolStripMenuItem,
             this.devolverUnAutomóvilToolStripMenuItem});
             this.gestionesToolStripMenuItem.Name = "gestionesToolStripMenuItem";
-            this.gestionesToolStripMenuItem.Size = new System.Drawing.Size(112, 24);
+            this.gestionesToolStripMenuItem.Size = new System.Drawing.Size(112, 26);
             this.gestionesToolStripMenuItem.Text = "📝 Gestiones";
             // 
             // clienteNuevoToolStripMenuItem
@@ -104,7 +105,7 @@
             // actualizarToolStripMenuItem
             // 
             this.actualizarToolStripMenuItem.Name = "actualizarToolStripMenuItem";
-            this.actualizarToolStripMenuItem.Size = new System.Drawing.Size(106, 24);
+            this.actualizarToolStripMenuItem.Size = new System.Drawing.Size(106, 26);
             this.actualizarToolStripMenuItem.Text = "↻ Actualizar";
             this.actualizarToolStripMenuItem.Click += new System.EventHandler(this.actualizarToolStripMenuItem_Click);
             // 
@@ -208,11 +209,20 @@
             this.label3.TabIndex = 33;
             this.label3.Text = "NIT";
             // 
+            // lblMayorPago
+            // 
+            this.lblMayorKm.AutoSize = true;
+            this.lblMayorKm.Location = new System.Drawing.Point(12, 393);
+            this.lblMayorKm.Name = "lblMayorPago";
+            this.lblMayorKm.Size = new System.Drawing.Size(0, 17);
+            this.lblMayorKm.TabIndex = 35;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 403);
+            this.ClientSize = new System.Drawing.Size(799, 453);
+            this.Controls.Add(this.lblMayorKm);
             this.Controls.Add(this.cmbNIT);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnReestablecer);
@@ -258,6 +268,7 @@
         private System.Windows.Forms.Button btnReestablecer;
         private System.Windows.Forms.ComboBox cmbNIT;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblMayorKm;
     }
 }
 
