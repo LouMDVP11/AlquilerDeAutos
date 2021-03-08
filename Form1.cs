@@ -18,6 +18,7 @@ namespace AlquilerDeAutos
         List<clsCliente> lstClientes = new List<clsCliente>();
         List<clsVehiculo> lstVehiculos = new List<clsVehiculo>();
         List<clsVehiculo> lstVehiculosDisponibles = new List<clsVehiculo>();
+        List<clsIntermedia> lstIntermedia = new List<clsIntermedia>();
 
         public Form1()
         {
@@ -80,6 +81,22 @@ namespace AlquilerDeAutos
                 lstAlquileres.Add(AlquilerTemp);
             }
             reader3.Close();
+            foreach (var al in lstAlquileres) {
+                string nombreTemp = "";
+                foreach (var c in lstClientes) {
+                    if (al.Nit.Equals(c.Nit)) {
+                        nombreTemp = c.Nombre;
+                        break;
+                    }
+                }
+                clsIntermedia interTemp = new clsIntermedia();
+                interTemp.Placa = al.Placa;
+                interTemp.Nombre = nombreTemp;
+                interTemp.FechaDevolucion = al.FechaDevolucion;
+                interTemp.KmRecorridos = al.KmRecorridos;
+                interTemp.Total_A_Pagar = al.Total_A_Pagar;
+                lstIntermedia.Add(interTemp);
+            }
         }
         public void actualizar()
         {
@@ -98,7 +115,7 @@ namespace AlquilerDeAutos
             this.dtgVehiculosDisponibles.DataSource = this.lstVehiculosDisponibles;
             this.dtgVehiculosDisponibles.Refresh();
             this.dtgVehiculosAlquiler.DataSource = null;
-            this.dtgVehiculosAlquiler.DataSource = this.lstAlquileres;
+            this.dtgVehiculosAlquiler.DataSource = this.lstIntermedia;
             this.dtgVehiculosAlquiler.Refresh();
             cmbPlaca.Items.Clear();
             //Llenado del cmbPlaca con todas las placas registradas en la lista
@@ -123,13 +140,31 @@ namespace AlquilerDeAutos
         private void rbNombre_CheckedChanged(object sender, EventArgs e){}
 
 
-        private void AlquilerFiltrado(List<clsAlquiler> lstAlquileresTemp)
+        private void AlquilerFiltrado(List<clsIntermedia> lstAlquileresTemp)
         {
             //Función que muestra los autos dependiendo de lo
             //que fue seleccionado en el combobox, es decir
             //en base a la placa y al nit del cliente
+            int nitTemp = 0; string nombreTemp = "";
+            foreach (var c in lstClientes)
+            {
+                if (c.Nit.Equals(Convert.ToInt32(cmbNIT.SelectedItem)))
+                {
+                    nitTemp = c.Nit;
+                    nombreTemp = c.Nombre;
+                    break;
+                }
+            }
             foreach (var a in lstAlquileres)
-                if (a.Placa.Equals(cmbPlaca.SelectedItem.ToString()) && a.Nit.Equals(Convert.ToInt32(cmbNIT.SelectedItem))) lstAlquileresTemp.Add(a);
+                if (a.Placa.Equals(cmbPlaca.SelectedItem.ToString()) && a.Nit.Equals(nitTemp)) {
+                    clsIntermedia interTemp = new clsIntermedia();
+                    interTemp.Placa = a.Placa;
+                    interTemp.Nombre = nombreTemp;
+                    interTemp.FechaDevolucion = a.FechaDevolucion;
+                    interTemp.KmRecorridos = a.KmRecorridos;
+                    interTemp.Total_A_Pagar = a.Total_A_Pagar;
+                    lstAlquileresTemp.Add(interTemp);
+                } 
             dtgVehiculosAlquiler.DataSource = null;
             dtgVehiculosAlquiler.DataSource = lstAlquileresTemp;
             dtgVehiculosAlquiler.Refresh();
@@ -160,7 +195,7 @@ namespace AlquilerDeAutos
             //se crea una lista de alquileres temporal 
             //y le llama a la función AlquilerFiltrado
             //para organizar el dtg con los datos filtrados.
-            List<clsAlquiler> lstAlquileresTemp = new List<clsAlquiler>();
+            List<clsIntermedia> lstAlquileresTemp = new List<clsIntermedia>();
             AlquilerFiltrado(lstAlquileresTemp);
         }
 
